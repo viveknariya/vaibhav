@@ -132,3 +132,4 @@
 /home/viveknariya/Desktop/vaibhav/WebApplication1/obj/Debug/net8.0/WebApplication1.pdb
 /home/viveknariya/Desktop/vaibhav/WebApplication1/obj/Debug/net8.0/WebApplication1.genruntimeconfig.cache
 /home/viveknariya/Desktop/vaibhav/WebApplication1/obj/Debug/net8.0/ref/WebApplication1.dll
+/home/viveknariya/Desktop/vaibhav/WebApplication1/obj/Debug/net8.0/WebApplication1.sourcelink.json

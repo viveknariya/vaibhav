@@ -36,6 +36,22 @@ public class TodosController : ControllerBase
         return Ok(todo);
     }
 
+    [HttpGet("user/{id}")]
+    public async Task<IActionResult> GetTodoByUserId(int id)
+    {
+        var todos = await _context.Todos
+            .Where(t => t.UserId == id)
+            .ToListAsync();
+
+        if (!todos.Any())
+        {
+            return NotFound();
+        }
+
+        return Ok(todos);
+    }
+
+
     // POST: api/todos
     [HttpPost]
     public async Task<IActionResult> CreateTodo(Todo todo)

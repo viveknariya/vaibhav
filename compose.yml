@@ -1,0 +1,36 @@
+version: "3.8"
+
+services:
+  webapi:
+    #build:
+    image:
+      "viveknariya/vaibhav-webapi"
+      #context: ./WebApplication1
+      #dockerfile: Dockerfile
+    ports:
+      - "8080:8080" # Map the container port to localhost
+    volumes:
+      - ./data:/app/Data # Persist SQLite database in a mounted volume
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    depends_on:
+      - initdb
+
+  initdb:
+    image: busybox
+    volumes:
+      - ./data:/app/Data
+    command:
+      ["/bin/sh", "-c", "mkdir -p /app/Data && touch /app/Data/Database.db"]
+    restart: "no"
+
+  angular-frontend:
+    #build:
+    image:
+      "viveknariya/vaibhav-angular-frontend"
+      #context: ./AngularApp
+      #dockerfile: Dockerfile
+    ports:
+      - "4200:80"
+    depends_on:
+      - webapi
